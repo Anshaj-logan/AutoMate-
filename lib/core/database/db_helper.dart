@@ -1,9 +1,9 @@
 import 'dart:io';
+import 'package:auto_mate/core/models/service_model.dart';
 import 'package:auto_mate/core/models/vehicle_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-
 
 class DBHelper {
   static Database? _db;
@@ -41,6 +41,18 @@ class DBHelper {
             year INTEGER NOT NULL
           )
         ''');
+
+        // Create services table
+
+        await db.execute('''
+  CREATE TABLE services (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    vehicleId INTEGER NOT NULL,
+    serviceType TEXT NOT NULL,
+    timeSlot TEXT NOT NULL,
+    status TEXT NOT NULL
+  )
+''');
       },
     );
   }
@@ -70,6 +82,25 @@ class DBHelper {
     final db = await database;
     await db.insert('vehicles', vehicle.toMap());
   }
+
+  // ------------------ service Table Methods ------------------
+
+  static Future<void> insertService(ServiceBooking booking) async {
+    final db = await database;
+    await db.insert('services', booking.toMap());
+  }
+
+  static Future<List<ServiceBooking>> getCompletedBookings() async {
+  final db = await database;
+  final result = await db.query(
+    'services',
+    where: 'status = ?',
+    whereArgs: ['Completed'],
+  );
+
+  return result.map((map) => ServiceBooking.fromMap(map)).toList();
+}
+
 
   static Future<List<Vehicle>> getAllVehicles() async {
     final db = await database;

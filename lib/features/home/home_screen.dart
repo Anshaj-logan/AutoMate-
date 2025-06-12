@@ -1,4 +1,6 @@
 import 'package:auto_mate/core/providers/auth_provider.dart';
+import 'package:auto_mate/features/Service/book_service_screen.dart';
+import 'package:auto_mate/features/Service/service_history_screen.dart';
 import 'package:auto_mate/features/vehicle/my_vehicles_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,15 +15,21 @@ class HomeScreen extends StatelessWidget {
     final List<_HomeItem> items = [
       _HomeItem("My Vehicles", Icons.directions_car, () {
         Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const MyVehiclesScreen()),
-    );
+          context,
+          MaterialPageRoute(builder: (_) => const MyVehiclesScreen()),
+        );
       }),
       _HomeItem("Book Service", Icons.build_circle, () {
-        // Navigate to Book Service
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const BookServiceScreen()),
+        );
       }),
       _HomeItem("Service History", Icons.history, () {
-        // Navigate to Service History
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const ServiceHistoryScreen()),
+        );
       }),
       _HomeItem("Contact Support", Icons.support_agent, () {
         // Navigate to Contact Page
@@ -86,7 +94,8 @@ class HomeScreen extends StatelessWidget {
                           const SizedBox(height: 12),
                           Text(
                             item.label,
-                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),
@@ -119,7 +128,7 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(width: 16),
           Expanded(
             child: Text(
-              'Hi  ${auth.name ?? "User"} 👋', 
+              'Hi  ${auth.name ?? "User"} 👋',
               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
