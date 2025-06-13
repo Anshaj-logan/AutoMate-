@@ -42,7 +42,7 @@ void _saveVehicle() async {
     await DBHelper.insertVehicle(vehicle);
 
     if (mounted) {
-      Navigator.pop(context, true); // Indicate success
+      Navigator.pop(context, true); 
     }
   }
 }

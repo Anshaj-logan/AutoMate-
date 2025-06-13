@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
         );
       }),
       _HomeItem("Contact Support", Icons.support_agent, () {
-        // Navigate to Contact Page
+        
       }),
     ];
 

@@ -44,7 +44,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(title: const Text("Service History")),
     body: _isLoading
-        ? const Center(child: CircularProgressIndicator()) // ✅ wait for data
+        ? const Center(child: CircularProgressIndicator()) 
         : _bookings.isEmpty
             ? const Center(child: Text("No completed services yet."))
             : ListView.builder(

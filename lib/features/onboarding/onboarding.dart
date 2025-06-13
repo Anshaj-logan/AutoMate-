@@ -87,7 +87,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           else
             TextButton(
               onPressed: () {
-                // Move to next page using CarouselSlider's built-in page change
+               
                 setState(() {
                   _currentIndex = (_currentIndex + 1) % _images.length;
                 });

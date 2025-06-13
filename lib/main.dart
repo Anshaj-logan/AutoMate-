@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:auto_mate/features/auth/auth.dart';
 import 'package:auto_mate/features/home/home_screen.dart';
 
-
 void main() {
   runApp(
     ChangeNotifierProvider(
@@ -30,42 +29,26 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           home: Builder(
-  builder: (context) {
-    if (!auth.hasInitialized) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
+            builder: (context) {
+              if (!auth.hasInitialized) {
+                return const Scaffold(
+                  body: Center(child: CircularProgressIndicator()),
+                );
+              }
 
-    if (!auth.hasCompletedOnboarding) {
-      return const OnboardingScreen();
-    }
+              if (!auth.hasCompletedOnboarding) {
+                return const OnboardingScreen();
+              }
 
-    if (auth.isAuthenticated) {
-      return const HomeScreen();
-    }
+              if (auth.isAuthenticated) {
+                return const HomeScreen();
+              }
 
-    return const AuthScreen();
-  },
-),
-
+              return const AuthScreen();
+            },
+          ),
         );
       },
     );
-  }
-
-  Widget _buildInitialScreen(AuthProvider auth) {
-    if (!auth.hasInitialized) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
-
-    if (auth.isAuthenticated) {
-      return const HomeScreen();
-    }
-
-    // Add onboarding logic here if needed
-    return const AuthScreen(); // 👈 direct to AuthScreen instead of named route
   }
 }

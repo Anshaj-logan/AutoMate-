@@ -57,12 +57,12 @@ class _BookServiceScreenState extends State<BookServiceScreen> {
       "Service booked successfully!",
       style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
     ),
-    backgroundColor: Colors.green, // ✅ Success color
-    behavior: SnackBarBehavior.floating, // Optional: float above content
-    shape: RoundedRectangleBorder( // Optional: rounded corners
+    backgroundColor: Colors.green, 
+    behavior: SnackBarBehavior.floating, 
+    shape: RoundedRectangleBorder( 
       borderRadius: BorderRadius.circular(12),
     ),
-    margin: const EdgeInsets.all(16), // Optional: margin for floating
+    margin: const EdgeInsets.all(16), 
     duration: const Duration(seconds: 3),
   ),
 );
@@ -91,11 +91,12 @@ class _BookServiceScreenState extends State<BookServiceScreen> {
               elevation: 2,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
               child: Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(12),
                 child: Column(
                   children: [
                     DropdownButtonFormField<Vehicle>(
                       value: _selectedVehicle,
+                      isExpanded: true,
                       decoration: InputDecoration(
                         labelText: "Select Vehicle",
                         prefixIcon: const Icon(Icons.directions_car),
@@ -112,6 +113,7 @@ class _BookServiceScreenState extends State<BookServiceScreen> {
                     const SizedBox(height: 16),
                     DropdownButtonFormField<String>(
                       value: _selectedService,
+                       isExpanded: true,
                       decoration: InputDecoration(
                         labelText: "Select Service",
                         prefixIcon: const Icon(Icons.miscellaneous_services),
@@ -128,6 +130,7 @@ class _BookServiceScreenState extends State<BookServiceScreen> {
                     const SizedBox(height: 16),
                     DropdownButtonFormField<String>(
                       value: _selectedTimeSlot,
+                       isExpanded: true,
                       decoration: InputDecoration(
                         labelText: "Select Time Slot",
                         prefixIcon: const Icon(Icons.access_time),
